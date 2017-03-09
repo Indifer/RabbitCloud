@@ -1,17 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>基于DotNetty的Rpc通信扩展。</Description>
-    <Copyright>© RabbitHub. All rights reserved.</Copyright>
-    <VersionPrefix>1.0.0-alpha1</VersionPrefix>
-    <Authors>majian</Authors>
     <TargetFrameworks>net451;netstandard1.6</TargetFrameworks>
-    <AssemblyName>Rabbit.Transport.DotNetty</AssemblyName>
-    <PackageId>Rabbit.Transport.DotNetty</PackageId>
-    <PackageTags>RabbitHub;RPC</PackageTags>
-    <PackageIconUrl>http://www.rabbithub.com/icon.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/RabbitTeam/Rpc</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/RabbitTeam/Rpc/blob/master/LICENSE</PackageLicenseUrl>
+    <AssemblyName>Echo.Common</AssemblyName>
+    <PackageId>Echo.Common</PackageId>
     <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
     <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.6' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
@@ -20,16 +12,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Rabbit.Rpc\Rabbit.Rpc.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DotNetty.Codecs" Version="0.4.2" />
+    <ProjectReference Include="..\..\Rabbit.Rpc\Rabbit.Rpc.csproj" />
+    <PackageReference Include="protobuf-net" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <DefineConstants>$(DefineConstants);NET</DefineConstants>
+  </PropertyGroup>
 
 </Project>
